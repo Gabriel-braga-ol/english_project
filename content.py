@@ -24,7 +24,7 @@ class Content:
         words = self.text.split()
         count = 0
         for word in words:
-            lowercase_word = word.lower()
+            lowercase_word = word.lower().strip('.,!?')
             if lowercase_word in known_words:
                 count += 1
         
