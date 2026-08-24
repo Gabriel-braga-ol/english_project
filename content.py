@@ -24,11 +24,16 @@ class Content:
         words = self.text.split()
         count = 0
         for word in words:
-            lowercase_word = word.lower().strip('.,!?')
+            lowercase_word = self._normalize_word(word)
             if lowercase_word in known_words:
                 count += 1
         
         return count
+
+    def _normalize_word(self, word):
+        normalize_word = word.lower().strip(".,!?()'")
+        return normalize_word
+        
 
     def get_comprehensibility_score(self, known_words):
         known_word_count = self.get_known_word_count(known_words)

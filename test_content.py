@@ -102,3 +102,26 @@ def test_difficulty(known_count, expected_difficulty):
     )
 
     assert content.get_difficulty(known_words[:known_count]) == expected_difficulty
+
+@pytest.mark.parametrize(
+        'entrada, esperado',
+        [
+            ('Python.', 'python'),
+            ('HELLO!', 'hello'),
+            ('Now,', 'now'),
+            ('Really?', 'really'),
+            ("(Python)", 'python'),
+            ("'Hello!'", 'hello'),
+            ("'Hello'", 'hello'),
+            ("don't", "don't")
+        ]
+)
+
+
+def test_normalize_word(entrada, esperado):
+    content = Content(
+        'Teste',
+        ''
+    )
+
+    assert content._normalize_word(entrada) == esperado
