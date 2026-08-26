@@ -54,4 +54,11 @@ def test_known_words_are_normalized_on_creation():
 
     assert learner.known_words == ["python", "hello", "world"]
 
+def test_known_words_do_not_have_duplicates_on_creation():
+    learner = Learner(
+        'John',
+        ['Python', 'Hello', 'python']
+    )
+
+    assert learner.known_words == ["python", "hello"]
 
