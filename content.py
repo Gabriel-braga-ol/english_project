@@ -1,4 +1,5 @@
 from datetime import date
+from text_utils import normalize_word
 
 class Content:
     
@@ -24,15 +25,11 @@ class Content:
         words = self.text.split()
         count = 0
         for word in words:
-            lowercase_word = self._normalize_word(word)
+            lowercase_word = normalize_word(word)
             if lowercase_word in known_words:
                 count += 1
         
         return count
-
-    def _normalize_word(self, word):
-        normalize_word = word.lower().strip(".,!?()'")
-        return normalize_word
         
 
     def get_comprehensibility_score(self, known_words):
