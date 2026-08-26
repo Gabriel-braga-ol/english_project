@@ -1,4 +1,5 @@
 from content import Content
+from learner import Learner
 import pytest
 
 def test_word_count_with_four_words():
@@ -103,3 +104,15 @@ def test_difficulty(known_count, expected_difficulty):
 
     assert content.get_difficulty(known_words[:known_count]) == expected_difficulty
 
+def test_comprehensibility_score_with_learner():
+    content = Content(
+        'Teste',
+        'I really like Python'
+    )
+
+    learner = Learner(
+        'John',
+        ['i', 'python']
+    )
+
+    assert content.get_comprehensibility_score(learner.known_words) == 50
