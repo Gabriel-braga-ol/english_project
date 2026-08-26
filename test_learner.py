@@ -14,7 +14,7 @@ def test_learner_known_words():
         ['Hello', 'World']
     )
 
-    assert learner.known_words == ['Hello', 'World']
+    assert learner.known_words == ['hello', 'world']
 
 def test_add_known_word():
     learner = Learner(
@@ -24,7 +24,7 @@ def test_add_known_word():
 
     learner.add_known_word('Python')
 
-    assert learner.known_words == ['Hello', 'World', 'python']
+    assert learner.known_words == ['hello', 'world', 'python']
 
 def test_add_duplicate_known_word():
     learner = Learner(
@@ -34,7 +34,7 @@ def test_add_duplicate_known_word():
 
     learner.add_known_word('Python')
 
-    assert learner.known_words == ['Hello', 'Python']
+    assert learner.known_words == ['hello', 'python']
 
 def test_add_known_word_ignores_case():
     learner = Learner(
@@ -44,4 +44,14 @@ def test_add_known_word_ignores_case():
 
     learner.add_known_word('python')
 
-    assert learner.known_words == ['Python']
+    assert learner.known_words == ['python']
+
+def test_known_words_are_normalized_on_creation():
+    learner = Learner(
+        'John',
+        ['Python', 'HELLO!', 'World']
+    )
+
+    assert learner.known_words == ["python", "hello", "world"]
+
+
