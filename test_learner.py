@@ -62,3 +62,22 @@ def test_known_words_do_not_have_duplicates_on_creation():
 
     assert learner.known_words == ["python", "hello"]
 
+def test_remove_known_word():
+    learner = Learner(
+        'John',
+        ["i", "really", "python"]
+    )
+
+    learner.remove_known_word('python')
+
+    assert learner.known_words == ["i", "really"]
+
+def test_remove_known_word_ignores_case_and_punctuation():
+    learner = Learner(
+        'John',
+        ["i", "python"]
+    )
+
+    learner.remove_known_word('PYTHON!')
+
+    assert learner.known_words == ['i']

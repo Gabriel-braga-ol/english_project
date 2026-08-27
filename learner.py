@@ -13,3 +13,9 @@ class Learner:
 
         if normalized_word not in self.known_words:
             self.known_words.append(normalized_word)
+
+    def remove_known_word(self, word):
+        normalized_word = normalize_word(word)
+
+        if normalized_word in self.known_words:
+            self.known_words.remove(normalized_word)
