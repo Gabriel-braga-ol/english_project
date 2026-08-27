@@ -17,21 +17,24 @@ class Content:
     def get_date(self):
         return self.created_date
 
+    def get_known_words(self, known_words):
+        sentence = self.text.split()
+        known_words_found = []
+        for word in sentence:
+            normalized_words = normalize_word(word)
+            if normalized_words in known_words:
+                known_words_found.append(normalized_words)
+
+        return known_words_found
+
     def get_word_count(self):
         sentence = self.text.split()
         return len(sentence)
 
     def get_known_word_count(self, known_words):
-        words = self.text.split()
-        count = 0
-        for word in words:
-            lowercase_word = normalize_word(word)
-            if lowercase_word in known_words:
-                count += 1
+        known_words_found = self.get_known_words(known_words)
+        return len(known_words_found)
         
-        return count
-        
-
     def get_comprehensibility_score(self, known_words):
         known_word_count = self.get_known_word_count(known_words)
         total_words = self.get_word_count()
@@ -56,10 +59,18 @@ class Content:
             return 'Hard'
 
     def get_unknown_word_count(self, known_words):
-        total_words = self.get_word_count()
-        known_word_count = self.get_known_word_count(known_words)
+        unknown_words = self.get_unknown_words(known_words)
+        return len(unknown_words)
+        
 
-        unknown_words = total_words - known_word_count
+    def get_unknown_words(self, known_words):
+        sentence = self.text.split()
+        unknown_words = []
+        for word in sentence:
+            normalized_words = normalize_word(word)
+            if normalized_words not in known_words:
+                unknown_words.append(normalized_words)
 
         return unknown_words
+
         

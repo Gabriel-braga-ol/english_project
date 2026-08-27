@@ -116,3 +116,32 @@ def test_comprehensibility_score_with_learner():
     )
 
     assert content.get_comprehensibility_score(learner.known_words) == 50
+
+def test_get_unknown_words():
+    known_words = [
+        'i',
+        'really',
+        'python'
+    ]
+
+    content = Content(
+        'Teste',
+        'I really like learning Python'
+    )
+
+    assert content.get_unknown_words(known_words) == ["like", "learning"]
+
+def test_get_known_words():
+    known_words = [
+        'i',
+        'really',
+        'python'
+    ]
+
+    content = Content(
+        'Teste',
+        'I really like learning Python'
+    )
+
+    assert content.get_known_words(known_words) == ["i", "really", "python"]
+     
