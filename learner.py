@@ -28,3 +28,6 @@ class Learner:
             raise ValueError('Nível inválido')
        
         self.level = level
+
+    def get_known_word_count(self):
+        return len(self.known_words)

@@ -117,4 +117,11 @@ def test_create_learner_with_invalid_level_raises_error():
             ["hello", "world"],
             'Batata'
         )
-    
+
+def test_get_known_word_count():
+    learner = Learner(
+        "John",
+        ["hello", "world"]
+    )
+
+    assert learner.get_known_word_count() == 2
