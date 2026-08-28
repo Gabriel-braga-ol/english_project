@@ -161,3 +161,13 @@ def test_comprehensibility_score_increases_after_learning_word():
     learner.add_known_word('learning')
 
     assert content.get_comprehensibility_score(learner.known_words) == 80
+
+def test_content_has_topic():
+    content = Content(
+        "Roman Empire",
+        "The Roman Empire was one of the largest empires in history.",
+        "história"
+    )
+
+    assert content.get_topic() == "história"
+

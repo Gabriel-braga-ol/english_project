@@ -3,10 +3,11 @@ from text_utils import normalize_word, extract_words
 
 class Content:
     
-    def __init__(self, title, text):
+    def __init__(self, title, text, topic=None):
         self.title = title
         self.text = text
         self.created_date = date.today()
+        self.topic = topic
 
     def get_title(self):
         return self.title
@@ -71,4 +72,5 @@ class Content:
 
         return unknown_words
 
-        
+    def get_topic(self):
+        return self.topic

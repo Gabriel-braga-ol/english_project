@@ -7,6 +7,7 @@ class Learner:
         self.name = name
         self.set_level(level)
         self.known_words = []
+        self.interests = []
 
         for known_word in known_words:
             self.add_known_word(known_word)
@@ -43,3 +44,9 @@ class Learner:
     def knows_word(self, word):
         normalized_word = normalize_word(word)
         return normalized_word in self.known_words
+
+    def add_interest(self, interest):
+        normalized_interest = normalize_word(interest)
+        
+        if normalized_interest not in self.interests:
+            self.interests.append(normalized_interest)

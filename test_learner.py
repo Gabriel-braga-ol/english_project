@@ -171,3 +171,25 @@ def test_remove_multiple_known_words():
     learner.remove_known_words(["from", "world"])
 
     assert learner.known_words == ["started"]
+
+def test_add_interest():
+    learner = Learner(
+        "John",
+        ["hello"]
+    )
+
+    learner.add_interest("História")
+
+    assert learner.interests == ["história"]
+
+def test_duplicate_interest():
+    learner = Learner(
+        "John",
+        ["hello"]
+    )
+
+    learner.add_interest("História")
+    learner.add_interest("HISTÓRIA")
+
+    assert learner.interests == ["história"]
+
