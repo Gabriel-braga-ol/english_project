@@ -81,3 +81,11 @@ def test_remove_known_word_ignores_case_and_punctuation():
     learner.remove_known_word('PYTHON!')
 
     assert learner.known_words == ['i']
+
+def test_learner_level():
+    learner = Learner(
+        'John',
+        ["hello", "world"]
+    )
+
+    assert learner.level == 'Beginner'

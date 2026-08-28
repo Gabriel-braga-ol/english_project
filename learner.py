@@ -1,8 +1,9 @@
 from text_utils import normalize_word
 
 class Learner:
-    def __init__(self, name, known_words):
+    def __init__(self, name, known_words, level='Beginner'):
         self.name = name
+        self.level = level
         self.known_words = []
 
         for known_word in known_words:

@@ -13,6 +13,7 @@ def main():
         'Facebook started on February 4, 2004. Mark Zuckerberg launched it from his dorm room at Harvard University',
     )
     print('Title:', p1.get_title())
+    print('Studant name:', learner.name)
     print('Total words:', p1.get_word_count())
     print('known words:', p1.get_known_word_count(learner.known_words))
     print('Unknown words:', p1.get_unknown_word_count(learner.known_words))
