@@ -31,3 +31,7 @@ class Learner:
 
     def get_known_word_count(self):
         return len(self.known_words)
+
+    def knows_word(self, word):
+        normalized_word = normalize_word(word)
+        return normalized_word in self.known_words

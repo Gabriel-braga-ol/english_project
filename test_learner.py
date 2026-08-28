@@ -125,3 +125,19 @@ def test_get_known_word_count():
     )
 
     assert learner.get_known_word_count() == 2
+
+def test_knows_word_returns_true_for_known_word():
+    learner = Learner(
+        "John",
+        ["hello", "python"]
+    )
+
+    assert learner.knows_word("python") is True
+
+def test_knows_word_ignores_case_and_punctuation():
+    learner = Learner(
+        "John",
+        ["python"]
+    )
+
+    assert learner.knows_word("PYTHON!") is True
