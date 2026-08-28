@@ -1,5 +1,5 @@
 from datetime import date
-from text_utils import normalize_word
+from text_utils import normalize_word, extract_words
 
 class Content:
     
@@ -18,17 +18,16 @@ class Content:
         return self.created_date
 
     def get_known_words(self, known_words):
-        sentence = self.text.split()
+        sentence = extract_words(self.text)
         known_words_found = []
         for word in sentence:
-            normalized_words = normalize_word(word)
-            if normalized_words in known_words:
-                known_words_found.append(normalized_words)
+            if word in known_words:
+                known_words_found.append(word)
 
         return known_words_found
 
     def get_word_count(self):
-        sentence = self.text.split()
+        sentence = extract_words(self.text)
         return len(sentence)
 
     def get_known_word_count(self, known_words):
@@ -64,12 +63,11 @@ class Content:
         
 
     def get_unknown_words(self, known_words):
-        sentence = self.text.split()
+        sentence = extract_words(self.text)
         unknown_words = []
         for word in sentence:
-            normalized_words = normalize_word(word)
-            if normalized_words not in known_words:
-                unknown_words.append(normalized_words)
+            if word not in known_words:
+                unknown_words.append(word)
 
         return unknown_words
 
