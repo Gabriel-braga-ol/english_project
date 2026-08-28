@@ -144,4 +144,20 @@ def test_get_known_words():
     )
 
     assert content.get_known_words(known_words) == ["i", "really", "python"]
-     
+
+def test_comprehensibility_score_increases_after_learning_word():
+    content = Content(
+        'Teste',
+        'I really like learning Python'
+    )
+
+    learner = Learner(
+        'John',
+        ["i", "really", "python"]
+    )
+
+    assert content.get_comprehensibility_score(learner.known_words) == 60
+
+    learner.add_known_word('learning')
+
+    assert content.get_comprehensibility_score(learner.known_words) == 80
