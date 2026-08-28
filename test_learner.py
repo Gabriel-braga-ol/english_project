@@ -141,3 +141,23 @@ def test_knows_word_ignores_case_and_punctuation():
     )
 
     assert learner.knows_word("PYTHON!") is True
+
+def test_add_multiple_known_words():
+    learner = Learner(
+        "John",
+        ["hello"]
+    )
+
+    learner.add_known_words(["python", "world"])
+
+    assert learner.known_words == ["hello", "python", "world"]
+
+def test_add_multiple_known_words_normalizes_and_avoids_duplicates():
+    learner = Learner(
+        "John",
+        ["python"]
+    )
+
+    learner.add_known_words(["PYTHON!", "World"])
+
+    assert learner.known_words == ["python", "world"]
