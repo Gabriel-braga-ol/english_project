@@ -161,3 +161,13 @@ def test_add_multiple_known_words_normalizes_and_avoids_duplicates():
     learner.add_known_words(["PYTHON!", "World"])
 
     assert learner.known_words == ["python", "world"]
+
+def test_remove_multiple_known_words():
+    learner = Learner(
+        "John",
+        ["From", "Started", "World"]
+    )
+
+    learner.remove_known_words(["from", "world"])
+
+    assert learner.known_words == ["started"]

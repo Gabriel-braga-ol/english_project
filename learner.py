@@ -27,6 +27,10 @@ class Learner:
         if normalized_word in self.known_words:
             self.known_words.remove(normalized_word)
 
+    def remove_known_words(self, words):
+        for word in words:
+            self.remove_known_word(word)
+
     def set_level(self, level):
         if level not in Learner.PERMITTED_LEVELS:
             raise ValueError('Nível inválido')
