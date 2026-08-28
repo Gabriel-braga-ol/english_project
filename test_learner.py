@@ -1,4 +1,5 @@
 from learner import Learner
+import pytest
 
 def test_learner_name():
     learner = Learner(
@@ -88,4 +89,32 @@ def test_learner_level():
         ["hello", "world"]
     )
 
-    assert learner.level == 'Beginner'
+    assert learner.level == 'Iniciante'
+
+def test_set_level():
+    learner = Learner(
+        'John',
+        ["hello", "world"]
+    )
+
+    learner.set_level('Intermediário')
+
+    assert learner.level == 'Intermediário'
+
+def test_set_invalid_level_raises_error():
+    learner = Learner(
+        'John',
+        ["hello", "world"]
+    )
+
+    with pytest.raises(ValueError):
+        learner.set_level('Batata')
+
+def test_create_learner_with_invalid_level_raises_error():
+    with pytest.raises(ValueError):
+        learner = Learner(
+            'John',
+            ["hello", "world"],
+            'Batata'
+        )
+    
