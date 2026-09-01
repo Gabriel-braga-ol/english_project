@@ -74,3 +74,6 @@ class Content:
 
     def get_topic(self):
         return self.topic
+
+    def matches_interests(self, interests):
+        return self.topic in interests

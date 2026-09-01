@@ -171,3 +171,34 @@ def test_content_has_topic():
 
     assert content.get_topic() == "história"
 
+def test_content_matches_learner_interest():
+    content = Content(
+        "Roman Empire",
+        "The Roman Empire was one of the largest empires in history.",
+        "história"
+    )
+
+    interests = ["história", "tecnologia"]
+
+    assert content.matches_interests(interests) is True
+
+def test_content_not_matches_learner_interest():
+    content = Content(
+        "Roman Empire",
+        "The Roman Empire was one of the largest empires in history.",
+        "história"
+    )
+
+    interests = ["ciência", "tecnologia"]
+
+    assert content.matches_interests(interests) is False
+
+def test_content_without_topic_does_not_match_interests():
+    content = Content(
+        "Roman Empire",
+        "The Roman Empire was one of the largest empires in history.",
+    )
+
+    interests = ["ciência", "tecnologia"]
+
+    assert content.matches_interests(interests) is False
